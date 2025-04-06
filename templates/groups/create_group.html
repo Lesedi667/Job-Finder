@@ -1,0 +1,315 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore By Category</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #111;
+}
+
+.category-section {
+  padding: 50px 20px;
+  text-align: center;
+  background:url('/static/images/backgroundpicture.webp');
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  color: #fff;
+  z-index: 1;
+  position: relative;
+  z-index: -2;
+}
+
+.category-heading {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 40px;
+  margin-top: 50px;
+}
+
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.category-card {
+  background:  black;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  padding: 30px 20px;
+  width: 220px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card i {
+  font-size: 40px;
+  color: #00b86b;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.category-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.category-card p {
+  font-size: 14px;
+  color: #00b86b;
+}
+.testimonials {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.testimonials h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background-color: #f0faf4;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.testimonial-card.active {
+  background-color: #00a86b;
+  color: #fff;
+}
+
+.quote-icon {
+  font-size: 30px;
+  color: #00a86b;
+  margin-bottom: 15px;
+}
+
+.testimonial-card.active .quote-icon {
+  color: #fff;
+}
+
+.testimonial-card p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.client-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.client-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.client-info strong {
+  font-size: 16px;
+}
+
+.profession {
+  font-size: 13px;
+  color: inherit;
+}
+
+.arrow-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: #00a86b;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+}
+.navbar {
+      background-color: rgb(37, 36, 36);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .container {
+      height: 30px;
+    }
+
+    .nav-link:hover {
+      color: white !important;
+    }
+
+    .scrollable-content {
+      margin-top: 80px;
+    }
+
+    /* Existing styles for Page 2 */
+    .category-section { padding: 40px 20px; text-align: center; background-color: dimgray; color: #fff; }
+    .category-heading { font-size: 32px; margin-bottom: 40px; }
+    .category-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .category-card { background: #fff; border-radius: 12px; padding: 30px 20px; width: 220px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); cursor: pointer; }
+    .category-card:hover { transform: translateY(-5px); }
+    .category-card i { font-size: 40px; color: #00b86b; }
+    .category-card h3 { color: #111; }
+    .category-card p { color: #00b86b; }
+    .testimonials { text-align: center; padding: 40px 20px; }
+    .testimonial-card { background-color: #f0faf4; border-radius: 8px; padding: 20px; width: 300px; }
+    .testimonial-card.active { background-color: #00a86b; color: #fff; }
+    .quote-icon { font-size: 30px; color: #00a86b; }
+    .testimonial-card.active .quote-icon { color: #fff; }
+    .arrow-icon { background-color: #00a86b; color: #fff; }
+
+
+
+
+  </style>
+</head>
+<body>
+    <div class="navbar navbar-expand-lg navbar-light shadow-sm p-3">
+        <div class="container">
+          <img src="{% static 'images/design-internship-icon-style-vector.jpg' %}" alt="Company Logo" width="50" height="50" class="me-2">
+          <a class="navbar-brand" href="#" style="color: #5cb85c;">Job Finder</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <a href="{% url 'dashboard' %}" class="nav-link active" style="color: #5cb85c;">Home</a>
+              <li class="nav-item"><a class="nav-link" href="#" style="color: #5cb85c;">Contact us</a></li>
+              <a href="{% url 'create_group' %}" class="nav-link"style="color: white; font-weight: bold; border-bottom: 2px solid #5cb85c;">Want a Job</a>
+              <li class="nav-item"><a class="nav-link" href="#" style="color: #5cb85c;">Post a Job</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+
+  <section class="category-section">
+    <h2 class="category-heading">Explore By Category</h2>
+    <div class="category-container">
+      <div class="category-card">
+        <i class="fas fa-envelope"></i>
+        <h3>Marketing</h3>
+        <p>123 Vacancy</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-headset"></i>
+        <h3>Customer Service</h3>
+        <p>123 Vacancy</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-user-tie"></i>
+        <h3>Human Resource</h3>
+        <p>123 Vacancy</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-tasks"></i>
+        <h3>Project Management</h3>
+        <p>123 Vacancy</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Business Development</h3>
+        <p>123 Vacancy</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Sales & Communication</h3>
+        <p>123 Vacancy</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-book-open"></i>
+        <h3>Teaching & Education</h3>
+        <p>123 Vacancy</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-pencil-ruler"></i>
+        <h3>Design & Creative</h3>
+        <p>123 Vacancy</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>Our Clients Say!!!</h2>
+    <div class="testimonial-container">
+      <!-- Card 1 -->
+      <div class="testimonial-card">
+        <div class="quote-icon">❝</div>
+        <p>Pain and work itself, just and steady is what it is. Again and again pain stands with effort and work itself.</p>
+        <div class="client-info">
+          <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Client">
+          <div>
+            <strong>Client Name</strong>
+            <div class="profession">Profession</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 (Highlighted) -->
+      <div class="testimonial-card active">
+        <div class="quote-icon">❝</div>
+        <p>Pain and work itself, just and steady is what it is. Again and again pain stands with effort and work itself.</p>
+        <div class="client-info">
+            <img src="/static/images/precious.jpg" alt="Company Logo"width="50" height="50" class="me-2"> 
+          <div>
+            <strong>Client Name</strong>
+            <div class="profession">Profession</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="testimonial-card">
+        <div class="quote-icon">❝</div>
+        <p>Pain and work itself, just and steady is what it is. Again and again pain stands with effort and work itself.</p>
+        <div class="client-info">
+         
+          <img src="/static/images/lesedi.jpg" alt="Company Logo"width="50" height="50" class="me-2"> 
+          <div>
+            <strong>Client Name</strong>
+            <div class="profession">Profession</div>
+          </div>
+       
+    </div>
+  </section>
+
+</body>
+</html>
+
